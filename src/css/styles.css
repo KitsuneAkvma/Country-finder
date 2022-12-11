@@ -16,6 +16,8 @@
 }
 
 body {
+  z-index: 0;
+
   padding: 3em;
 
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
@@ -32,6 +34,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 1;
 
   width: 80vw;
   max-width: 50em;
@@ -59,7 +62,7 @@ body {
   border-bottom: 2px solid var(--main-color);
   outline: none;
 
-  color: #222a43;
+  color: var(--text-color);
 
   font-size: 1em;
   font: inherit;
@@ -78,11 +81,12 @@ body {
   background-color: var(--main-color);
 }
 .country-list {
+  z-index: 2;
+
   max-height: 10em;
 
   list-style: none;
   overflow: scroll;
-  scroll-behavior:;
   border-inline: var(--main-color) 1px solid;
 }
 
@@ -91,7 +95,7 @@ body {
   display: flex;
   gap: 2em;
 
-  border-bottom: #e458586d 1px solid;
+  border-bottom: var(--sec-color) 1px solid;
   cursor: pointer;
 
   font-size: 1.2em;
@@ -130,5 +134,5 @@ body {
   margin-top: 0.3em;
   margin-bottom: 0.5em;
 
-  border-bottom: #212121 2px double;
+  border-bottom: var(--sec-color) 2px double;
 }
