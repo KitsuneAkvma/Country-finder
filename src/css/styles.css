@@ -1,3 +1,6 @@
+/* --------- */
+/* VARIABLES */
+/* --------- */
 :root {
   --bg-color: #fffffe;
 
@@ -8,6 +11,10 @@
   --button-text: #fffffe;
   --text-color: #2b2c34;
 }
+
+/* ----- */
+/* UTILS */
+/* ----- */
 
 * {
   box-sizing: border-box;
@@ -29,6 +36,10 @@ body {
   line-height: 1.5;
 }
 
+/* ------ */
+/* WINDOW */
+/* ------ */
+
 .search {
   position: absolute;
   top: 50%;
@@ -46,15 +57,17 @@ body {
   background-color: var(--bg-color);
   border-radius: 0.7em;
   box-shadow: 0 1.3em 1.9em rgba(8, 21, 65, 0.3);
+  transition: all 1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
+
 .search > * {
   transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
-.searchbar {
-  display: grid;
-  grid-template-columns: 9fr;
-  gap: 2em;
-}
+
+/* --------- */
+/* SEARCHBAR */
+/* --------- */
+
 .search__box {
   padding: 0em 0.7em 0.6em;
 
@@ -68,18 +81,11 @@ body {
   font: inherit;
   text-align: center;
 }
-.search__button {
-  padding: 0.8em 0;
 
-  font-size: 1em;
+/* ------------ */
+/* COUNTRY LIST */
+/* ------------ */
 
-  border: none;
-  border-radius: 1.25em;
-  box-shadow: none;
-
-  color: var(--button-text);
-  background-color: var(--main-color);
-}
 .country-list {
   z-index: 2;
 
@@ -88,10 +94,11 @@ body {
   list-style: none;
   overflow: scroll;
   border-inline: var(--main-color) 1px solid;
+  box-shadow: inset -200px 200px 7px -200px rgba(0, 0, 0, 0.75);
 }
 
 .country-list__item {
-  margin: 0.3em;
+  padding: 0.3em;
   display: flex;
   gap: 2em;
 
@@ -100,8 +107,19 @@ body {
 
   font-size: 1.2em;
 }
+.country-list__item:hover {
+  background-color: var(--sec-color);
+}
 .country-list__item:last-child {
-  border-bottom: none;
+  border-bottom-color: var(--main-color);
+}
+
+/* ------------ */
+/* COUNTRY INFO */
+/* ------------ */
+
+.country-info {
+  overflow: scroll;
 }
 .country-info__symbols {
   display: flex;

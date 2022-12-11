@@ -4,11 +4,11 @@ import debounce from 'lodash.debounce';
 import { fetchCountries } from './fetchCountries';
 
 // Defining DOM elements
-
 const searchBar = document.querySelector('.search__box');
-// const searchButton = document.querySelector('.search__button');
 const countryList = document.querySelector('.country-list');
 const countryInfo = document.querySelector('.country-info');
+
+// call event on every change in value. I used debounce to block too many requests
 searchBar.addEventListener(
   'input',
   debounce(() => {
@@ -16,30 +16,8 @@ searchBar.addEventListener(
       countryInfo.innerHTML = '';
       countryList.innerHTML = '';
     }
-    let countryName = searchBar.value;
+    let countryName = searchBar.value.trim();
     let finalURL = `https://restcountries.com/v3.1/name/${countryName}`;
-    fetchCountries(finalURL);
+    fetchCountries(finalURL, countryName); // look for country with name simmiliar to the input
   }, 300)
 );
-// // Variables
-// const DEBOUNCE_DELAY = 300;
-// // Functions
-// function fetchCountries(name) {
-//   //Tworzy żądanie HTTP na nazwa źródła i przekazuje obietnicę z tablicą krajów - wynikiem żądania. Przenieś ją do oddzielnego pliku fetchCountries.js i utwórz eksport nazwany.
-//   fetch(`https://restcountries.com/v3.1/name/${name}`, {
-//     method: 'GET',
-//     headers: { 'Content-Type': 'application/json' },
-//   })
-//     .then(response => {
-//       if (!response.ok) throw new Error('There was an error!');
-
-//       return response.json();
-//     })
-//     .then(body => {
-
-//     })
-//     .catch(error => console.log(error))
-//     .finally(() => console.log('Promise fuffield!'));
-// }
-
-// searchBar.addEventListener('input', fetchCountries(searchBar.value));
