@@ -74,7 +74,7 @@ export function fetchCountries(url, countryName) {
                       }
                     },
                   };
-                  for (prop in countryData) {
+                  for (let prop in countryData) {
                     if (countryData[`${prop}`] === undefined) {
                       countryData[`${prop}`] = 'none';
                     }
@@ -115,7 +115,7 @@ export function fetchCountries(url, countryName) {
                 }
               },
             };
-            for (prop in countryData) {
+            for (let prop in countryData) {
               if (countryData[`${prop}`] === undefined) {
                 countryData[`${prop}`] = 'none';
               }
