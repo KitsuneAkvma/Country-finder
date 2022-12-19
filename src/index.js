@@ -1,14 +1,33 @@
 import './css/styles.css';
 import Notiflix from 'notiflix';
 import debounce from 'lodash.debounce';
-import { fetchCountries,countryData } from './fetchCountries';
+import { fetchCountries, countryData } from './fetchCountries';
 
 // Defining DOM elements
 const searchBar = document.querySelector('.search__box');
 const countryList = document.querySelector('.country-list');
 const countryInfo = document.querySelector('.country-info');
 
-export function createInfoPage(countryData) {
+export function createInfoPage(found) {
+  let countryData = {
+    flags: found.flags.svg,
+    coatsOfArms: found.coatOfArms.svg,
+    nameCommon: found.name.common,
+    alternativeSpellings: found.altSpellings.toString().split(',').join(', '),
+    languages: Object.values(found.languages),
+    currencies: Object.keys(found.currencies),
+    capital: found.capital,
+    continent: found.continents[0],
+    timeZone: found.timezones[0],
+    population: Intl.NumberFormat().format(found.population),
+  };
+
+  for (let prop in countryData) {
+    if (countryData[`${prop}`] === undefined) {
+      countryData[`${prop}`] = 'none';
+    }
+  }
+
   // create country info page
   countryInfo.innerHTML = `<div class="country-info__wrapper">
    <div class="country-info__symbols">
@@ -18,14 +37,11 @@ export function createInfoPage(countryData) {
    <div class="country-info__data">
      <h2 class="country-info__common-name">${countryData.nameCommon}</h2>
      <div class="country-info__data__wrapper">
-       <h3 class="data--name">${countryData.haveS(
-         'Alternative spelling',
-         countryData.alternativeSpellings
-       )}</h3>
+       <h3 class="data--name">Alternative spellings</h3>
        <p class="data--content">${countryData.alternativeSpellings}</p>
      </div>
      <div class="country-info__data__wrapper">
-       <h3 class="data--name">${countryData.haveS('Language', countryData.languages)}</h3>
+       <h3 class="data--name">${countryData.languages.length > 1 ? 'Languages' : 'Language'}</h3>
        <p class="data--content">${countryData.languages.toString().split(',').join(', ')}</p>
      </div>
      <div class="country-info__data__wrapper">

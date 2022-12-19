@@ -47,81 +47,35 @@ export function fetchCountries(url, countryName) {
               selectedCountry = event.currentTarget.querySelector(
                 '.country-list__item--name'
               ).innerHTML;
-              // when user clicks on country - get it's name and pass it to the function
-              // call simmiliar function optimized to find specified name
-              fetch(`https://restcountries.com/v3.1/name/${selectedCountry}`)
-                .then(response => response.json())
-                .then(data => {
-                  let countryData = {
-                    flags: data[0].flags.svg,
-                    coatsOfArms: data[0].coatOfArms.svg,
-                    nameCommon: data[0].name.common,
-                    alternativeSpellings: data[0].altSpellings.toString().split(',').join(', '),
-                    languages: Object.values(data[0].languages),
-                    currencies: Object.keys(data[0].currencies),
-                    capital: data[0].capital,
-                    continent: data[0].continents[0],
-                    timeZone: data[0].timezones[0],
-                    population: Intl.NumberFormat().format(data[0].population),
 
-                    haveS: function (word, prop) {
-                      switch (prop.length > 1) {
-                        case true: {
-                          return (word += 's');
-                        }
-                        case false:
-                          return (word = word);
-                      }
-                    },
-                  };
-                  for (let prop in countryData) {
-                    if (countryData[`${prop}`] === undefined) {
-                      countryData[`${prop}`] = 'none';
-                    }
-                  }
-                  createInfoPage(countryData);
-                });
+              //find country by name
+              let found = data.find((element, index) => {
+                if (element.name.common == selectedCountry) {
+                  console.log(index);
+                  return index;
+                }
+              });
+              found == undefined ? (found = data[0]) : (found = found);
+              console.log();
+              console.log();
+              console.log(found);
+
+              //create found country page (index.js)
+              createInfoPage(found);
 
               // clear searchbar and results list
               searchBar.value = '';
               countryList.innerHTML = '';
+              return;
             })
           );
         });
       } else {
-        //when there is only one result - find it bypassing list making
-        fetch(`https://restcountries.com/v3.1/name/${data[0].name.common}`)
-          .then(response => response.json())
-          .then(data => {
-            let countryData = {
-              flags: data[0].flags.svg,
-              coatsOfArms: data[0].coatOfArms.svg,
-              nameCommon: data[0].name.common,
-              alternativeSpellings: data[0].altSpellings.toString().split(',').join(', '),
-              languages: Object.values(data[0].languages),
-              currencies: Object.keys(data[0].currencies),
-              capital: data[0].capital,
-              continent: data[0].continents[0],
-              timeZone: data[0].timezones[0],
-              population: Intl.NumberFormat().format(data[0].population),
+        //when there is only one result
 
-              haveS: function (word, prop) {
-                switch (prop.length > 1) {
-                  case true: {
-                    return (word += 's');
-                  }
-                  case false:
-                    return (word = word);
-                }
-              },
-            };
-            for (let prop in countryData) {
-              if (countryData[`${prop}`] === undefined) {
-                countryData[`${prop}`] = 'none';
-              }
-            }
-            createInfoPage(countryData);
-          });
+        let found = data[0];
+        //create found country page (index.js)
+        createInfoPage(found);
       }
     })
     .catch(error => {
@@ -129,14 +83,6 @@ export function fetchCountries(url, countryName) {
         // do notthing
       } else {
         // in a situation where there is no result, display a notification asking user to enter a valid/different name
-        // function containsSpecialChars(str) {
-        //   let specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-        //   return specialChars.test(str);
-        // }
-        // if (containsSpecialChars(searchBar.value)) {
-        //   Notiflix.Notify.info('✅ string contains special characters');
-        //   return;
-        // } else{}
         Notiflix.Notify.failure(`Oops, there is no country with that name`);
       }
     });
