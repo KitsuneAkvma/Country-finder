@@ -55,6 +55,7 @@ export function fetchCountries(url, countryName) {
                   return index;
                 }
               });
+              // fix to siutuation when first element of the list is not read correctly.
               found == undefined ? (found = data[0]) : (found = found);
               console.log();
               console.log();

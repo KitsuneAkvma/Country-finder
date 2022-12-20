@@ -22,6 +22,7 @@ export function createInfoPage(found) {
     population: Intl.NumberFormat().format(found.population),
   };
 
+  // In situation when property isn't available - replace value to string 'none'
   for (let prop in countryData) {
     if (countryData[`${prop}`] === undefined) {
       countryData[`${prop}`] = 'none';
