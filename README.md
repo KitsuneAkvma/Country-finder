@@ -15,7 +15,7 @@ Country Finder is a simple web app made with vanilla JavaScript that allows you 
 
 ## Demo
 
-Check out the live demo of the Country Finder app hosted on GitHub Pages: [Country Finder Demo](https://your-username.github.io/country-finder/)
+Check out the live demo of the Country Finder app hosted on GitHub Pages: [Country Finder Demo]([https://your-username.github.io/country-finder/](https://kitsuneakvma.github.io/country-finder/))
 
 ## Technologies Used
 
