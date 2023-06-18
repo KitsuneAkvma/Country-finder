@@ -36,9 +36,9 @@
           <p class="data--content">${e.population}</p>
         </div>
       </div>
-      <a href=${e.maps.googleMaps}>
+      <a href=${e.maps.googleMaps} target=”_blank”>
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Google_Maps_icon_%282015-2020%29.svg/512px-Google_Maps_icon_%282015-2020%29.svg.png?20200220195824" alt="Google street view" class="country-info__maps-google" /></a>
-      <a href=${e.maps.openStreetMaps}>
+      <a href=${e.maps.openStreetMaps} target=”_blank”>
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Openstreetmap_logo.svg/256px-Openstreetmap_logo.svg.png?20220919103849" alt="openStreet Maps" class="country-info__maps-google" /></a>
     </div>`}N.addEventListener("input",t(o)(()=>{""===N.value&&(z.innerHTML="",C.innerHTML="");let e=N.value.trim(),i=`https://restcountries.com/v3.1/name/${e}`;!function(e,i){fetch(e).then(t=>t.json()).then(e=>{if(v.innerHTML="",e.length>10){t(n).Notify.info("Too many matches found. Please enter a more specific name.");return}e.length>1&&e.length<=10?e.forEach(t=>{let i=document.createElement("li"),a=document.createElement("div"),n=document.createElement("div");i.classList.add("country-list__item"),a.classList.add("country-list__item--name"),n.classList.add("country-list__item--flag"),a.textContent=t.name.common,n.textContent=t.flag,i.appendChild(n),i.appendChild(a),v.appendChild(i),i.addEventListener("click",()=>{let i=t.name.common,a=e.find(t=>t.name.common===i),n=a||e[0];S(n),h.value="",v.innerHTML=""})}):1===e.length&&S(e[0])}).catch(e=>{i.length>0&&t(n).Notify.failure("Oops, there is no country with that name")})}(i,e)},300))}();
-//# sourceMappingURL=index.dfa7cc06.js.map
+//# sourceMappingURL=index.08587650.js.map
