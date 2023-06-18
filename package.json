@@ -1,21 +1,21 @@
 {
-  "name": "goit-js-hw-10",
+  "name": "country-finder",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://KitsuneAkvma.github.io/goit-js-hw-10",
+  "homepage": "https://KitsuneAkvma.github.io/country-finder",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /goit-js-hw-10/"
+    "build": "parcel build src/*.html --public-url /country-finder/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KitsuneAkvma/goit-js-hw-10.git"
+    "url": "git+https://github.com/KitsuneAkvma/country-finder.git"
   },
   "keywords": [],
-  "author": "Mateusz Martin <mateusz.martinn@gmail.com>",
+  "author": "Mateusz Martin <mateusz.r.martin@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/KitsuneAkvma/goit-js-hw-10/issues"
+    "url": "https://github.com/KitsuneAkvma/country-finder/issues"
   },
   "dependencies": {
     "lodash.debounce": "^4.0.8",
