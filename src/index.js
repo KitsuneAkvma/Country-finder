@@ -22,8 +22,6 @@ export function createInfoPage(found) {
     maps: found.maps,
   };
 
-console.log(countryData.maps)
-
   for (let prop in countryData) {
     if (countryData[prop] === undefined) {
       countryData[prop] = 'none';
