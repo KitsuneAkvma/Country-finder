@@ -70,9 +70,9 @@ export function createInfoPage(found) {
           <p class="data--content">${countryData.population}</p>
         </div>
       </div>
-      <a href=${countryData.maps.googleMaps}>
+      <a href=${countryData.maps.googleMaps} target=”_blank”>
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Google_Maps_icon_%282015-2020%29.svg/512px-Google_Maps_icon_%282015-2020%29.svg.png?20200220195824" alt="Google street view" class="country-info__maps-google" /></a>
-      <a href=${countryData.maps.openStreetMaps}>
+      <a href=${countryData.maps.openStreetMaps} target=”_blank”>
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Openstreetmap_logo.svg/256px-Openstreetmap_logo.svg.png?20220919103849" alt="openStreet Maps" class="country-info__maps-google" /></a>
     </div>`;
 }
